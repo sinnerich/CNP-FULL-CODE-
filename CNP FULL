@@ -1,0 +1,175 @@
+import random
+import sys
+import os
+#scriem intr-un fisier output
+
+sys.stdout = open("output.txt" , 'w')
+
+def cnp(j):
+    cnp = ""
+
+    s1 = random.randint(1,2)
+    s2 = random.randint(5, 6)
+    s = random.choice([s1, s2])
+    #se utilizeaza pt numerele mai mici ca 10 care trebuie sa apara in cnp ca format 0a,unde a este cifra
+
+    aa = random.randint(00 , 99)
+    if int(aa) < 10:
+        aa = "0" + str(aa)
+
+    ll = random.randint(1,12)
+    if int(ll) < 10:
+        ll = "0" + str(ll)
+
+    zz = random.randint(1,31)
+    if int(zz) < 10:
+        zz = "0" + str(zz)
+
+    # jj =random.randint(1,42)
+    jj = str(j)
+    if int(jj) < 10:
+        jj = "0" + str(jj)
+
+    nnn = random.randint(1,999)
+    if int(nnn) < 10 :
+        nnn = "00" + str(nnn)
+    elif int(nnn) < 100:
+        nnn = "0" + str(nnn)
+
+    cnp = str(s) + str(aa) + str(ll) + str(zz) + str(jj) + str(nnn)
+
+    #cifra de control
+
+    const = "279146358279"
+    s = 0
+    for i in range(12):
+        s += int(cnp[i]) * int(const[i])
+    if int(s % 11) < 10:
+        c = s % 11
+    elif int(s % 11) > -1:
+        c = 1
+    elif int(s % 11) == 10:
+        c = 1
+    else:
+        c = 1
+
+    # cnp final
+
+    cnp = cnp + str(c)
+    return cnp
+
+def generare_nume(nrCNP,j):
+    nume = ["Sinn" , "Trif" , "Bejinariu" , "Bonte" , "Calauz" , "Chioran", "Cionca" , "Coman" , "Crisan" , "Danila" , "Denut" , "Gieger" ,"Godja" , "Groza" , "Ilies" , "Ludvig" , "Mehes" , "Mentes" , "Mereut" ,  "Mihoc" , "Mitre" , "Muntean" , "Oancea" , "Podut" , "Pop" , "Popa" , "Puscas" , "Roman" , "Romana" , "Tarta" ,"Turuczko" , "Vancea" , "Vancza" , "Vrencean"]
+    femei = ["Alina" , "Ioana" , "Ana" , "Maria" , "Emilia" , "Cintia" , "Danela" , "Talida" , "Jovana" , "Marioara" , "Alexandra" , "Izabela" , "Maia" , "Beatrice" , "Claudia" , "Denisa" , "Diana" , "Minodara" , "Camelia" , "Reka" , "Malina" , "Madalina" , "Andra" , "Andrada" , "Paula" , "Iulia" , "Oana" , "Stefania" , "Stefana" , "Flavia" , "Erica" , "Rodica" , "Ligia" , "Carmen"]
+    barbati = ["Erich" , "Flaviu" , "Rares" , "Raoul" , "Razvan" , "George" , "Paul" , "Gheorghe" , "Marian" , "Darius" , "Denis" , "Tudor" , "Sergiu" , "Samir" , "Tobias" , "Tomas" , "Alin" , "Marcel" , "Bob" , "Ion" , "Ionut" , "Petrica" , "Mihai" , "Petre" , "Catalin" , "Danciu" , "Liviu" , "Grigore" , "Bogdan" , "Olimpiu" , "Romulus" , "Ciprian"]
+    lista = []
+
+    #nrCNP
+    # for i in range(0,2):
+
+    s = 0
+
+    # daca din CNP reiese ca este femeie,se va genera numele potrivit,la fel pt barbati
+    dicts = ()
+    for m in range(nrCNP):
+        lst = cnp(j)
+        if lst[0][0] == "6" or lst[0][0] == "2":
+            perFN = random.choice(nume) + " " + random.choice(femei)
+            lista = [lst,perFN]
+            #transformam din lista in dictionar
+            it = iter(lista)
+            res_dct = dict(zip(it,it))
+            print(res_dct)
+            dicts = dicts + (res_dct,)
+
+        elif lst[0][0] == "1" or lst[0][0] == "5":
+            perBN = random.choice(nume) + " " + random.choice(barbati)
+            lista = [lst,perBN]
+            it = iter(lista)
+            res_dct = dict(zip(it,it))
+    #print(dicts) #punem intr-un set CNP-urile
+
+
+def populatie():
+    #femeile = [165559,211856,303252,294955]
+    #barbati = [161699,197216,288101,288635]
+    #datele privitoare la nr de locuitori pe judete sunt preluate de pe WikiPedia,din 2006.Total 22.057.932
+    judete = {
+"Alba": 378614,
+"Arad": 458487,
+"Arges": 644590,
+"Bacău": 721411,
+"Bihor": 594982,
+"Bistrita-Nasaud": 317685,
+"Botosani": 456765,
+"Braila": 367661,
+"Brasov": 595758,
+"Buzau": 490981,
+"Calarasi": 316294,
+"Caras-Severin": 330517,
+"Cluj": 689523,
+"Constanta": 716576,
+"Covasna": 223750,
+"Dambovita": 535087,
+"Dolj": 715989,
+"Galati": 617979,
+"Giurgiu": 284501,
+"Gorj": 383557,
+"Harghita": 326347,
+"Hunedoara": 477259,
+"Ialomita": 291178,
+"Iasi": 824083,
+"Ilfov": 288296,
+"Maramures": 515313,
+"Mehedinti": 301515,
+"Mures": 583210,
+"Neamt": 567908,
+"Olt": 479323,
+"Prahova": 823509,
+"Satu Mare": 367677,
+"Salaj": 244952,
+"Sibiu": 423119,
+"Suceava": 705730,
+"Teleorman": 417183,
+"Timis": 660966,
+"Tulcea": 251614,
+"Vaslui": 456686,
+"Vrancea": 393023,
+"Bucuresti": 1931236,
+}
+    listaJudete = list(judete.values()) #se face o lista cu valorile din dictionar
+    nr = len(listaJudete) #numarul de judete
+    s = 0
+
+    listaCNP = []
+    for i in range(nr):
+        nrCNP = ((listaJudete[i] * 1000000)) // 22057932
+        #print ("este nevoie de",nrCNP,"CNP-uri")
+        listaCNP.append(nrCNP) #punem intr-o lista cate CNP-uri sunt pt fiecare judet
+    print(listaCNP)
+
+    for i in range(nr):
+        s = s + listaCNP[i]
+    print("Numarul CNP-urilor in total este de:",s)
+
+    for i in range(len(listaCNP)):
+        generare_nume(listaCNP[i] , i + 1)
+        print("\n")
+    #generam CNP-urile pt fiecare judet folosind codul specific fiecarui judet in parte
+
+    # hash = {}
+    # for j in range(999):
+    #     for i in range(len(listaCNP)):
+    #         hash = {key:value for key, value in zip(genarare_nume(listaCNP[i],i+1),j)}
+    #     print(hash)
+
+populatie()
+
+def hash():
+    dictionar = []
+
+
+sys.stdout.close()
+
+
+
