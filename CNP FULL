@@ -64,9 +64,6 @@ def generare_nume(nrCNP,j):
     barbati = ["Erich" , "Flaviu" , "Rares" , "Raoul" , "Razvan" , "George" , "Paul" , "Gheorghe" , "Marian" , "Darius" , "Denis" , "Tudor" , "Sergiu" , "Samir" , "Tobias" , "Tomas" , "Alin" , "Marcel" , "Bob" , "Ion" , "Ionut" , "Petrica" , "Mihai" , "Petre" , "Catalin" , "Danciu" , "Liviu" , "Grigore" , "Bogdan" , "Olimpiu" , "Romulus" , "Ciprian"]
     nrCNP = 1000
 
-    #nrCNP
-    # for i in range(0,2):
-
     s = 0
 
     # daca din CNP reiese ca este femeie,se va genera numele potrivit,la fel pt barbati
@@ -167,7 +164,7 @@ populatie()
 
 def hash():
     dictionar = []
-
+#nu am folosit hash la momentul actual,deoarece nu stapnesc inca toate notiunile cerute de functia hash
 
 sys.stdout.close()
 
