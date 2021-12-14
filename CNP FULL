@@ -1,8 +1,8 @@
 import random
 import sys
-import os
 #scriem intr-un fisier output
 
+contor = 100000
 sys.stdout = open("output.txt" , 'w')
 
 def cnp(j):
@@ -62,7 +62,7 @@ def generare_nume(nrCNP,j):
     nume = ["Sinn" , "Trif" , "Bejinariu" , "Bonte" , "Calauz" , "Chioran", "Cionca" , "Coman" , "Crisan" , "Danila" , "Denut" , "Gieger" ,"Godja" , "Groza" , "Ilies" , "Ludvig" , "Mehes" , "Mentes" , "Mereut" ,  "Mihoc" , "Mitre" , "Muntean" , "Oancea" , "Podut" , "Pop" , "Popa" , "Puscas" , "Roman" , "Romana" , "Tarta" ,"Turuczko" , "Vancea" , "Vancza" , "Vrencean"]
     femei = ["Alina" , "Ioana" , "Ana" , "Maria" , "Emilia" , "Cintia" , "Danela" , "Talida" , "Jovana" , "Marioara" , "Alexandra" , "Izabela" , "Maia" , "Beatrice" , "Claudia" , "Denisa" , "Diana" , "Minodara" , "Camelia" , "Reka" , "Malina" , "Madalina" , "Andra" , "Andrada" , "Paula" , "Iulia" , "Oana" , "Stefania" , "Stefana" , "Flavia" , "Erica" , "Rodica" , "Ligia" , "Carmen"]
     barbati = ["Erich" , "Flaviu" , "Rares" , "Raoul" , "Razvan" , "George" , "Paul" , "Gheorghe" , "Marian" , "Darius" , "Denis" , "Tudor" , "Sergiu" , "Samir" , "Tobias" , "Tomas" , "Alin" , "Marcel" , "Bob" , "Ion" , "Ionut" , "Petrica" , "Mihai" , "Petre" , "Catalin" , "Danciu" , "Liviu" , "Grigore" , "Bogdan" , "Olimpiu" , "Romulus" , "Ciprian"]
-    lista = []
+    nrCNP = 1000
 
     #nrCNP
     # for i in range(0,2):
@@ -170,6 +170,8 @@ def hash():
 
 
 sys.stdout.close()
+
+
 
 
 
